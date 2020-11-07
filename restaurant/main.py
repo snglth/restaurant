@@ -3,7 +3,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-    return 'Golubtsy with guano served'
+    return 'Golubtsy with guano served! Yay!'
 
 if __name__ == '__main__':
     # Threaded option to enable multiple instances for multiple user access support
