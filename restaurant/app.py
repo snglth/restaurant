@@ -8,23 +8,27 @@ from restaurant.schema import Base as schema_base
 import restaurant.schema as schema
 
 
-def init_ingredients(sessionmaker,ingredients_list):
+def init_ingredients(sessionmaker, ingredients_list):
     session = sessionmaker()
     for ingredient in ingredients_list:
         session.add(schema.Ingredient(title=ingredient, unit=schema.Units.piece))
     session.commit()
 
+
 def make_app():
     app = Flask(__name__)
-    app.jinja_env.globals['CAFE_NAME'] = os.environ.get(
-        'CAFE_NAME') or "Semyon's Special"
+    app.jinja_env.globals["CAFE_NAME"] = (
+        os.environ.get("CAFE_NAME") or "Semyon's Special"
+    )
+    DB_URL = (
+        os.environ.get("DB_URL") or "postgresql://postgres:123@172.17.0.2/restaurant"
+    )
     # engine = create_engine('sqlite:///:memory:', echo=True)
-    engine = create_engine('postgresql://postgres:123@172.17.0.2/restaurant',
-                           echo=True)
+    engine = create_engine(DB_URL, echo=True)
     schema_base.metadata.create_all(engine)
 
     Session = sessionmaker(bind=engine)
-    INGREDIENTS = ['guano', 'feces', 'poop', 'shit', 'fudge']
+    INGREDIENTS = ["guano", "feces", "poop", "shit", "fudge"]
     init_ingredients(Session, INGREDIENTS)
     return app
 
