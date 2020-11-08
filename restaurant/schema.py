@@ -44,8 +44,8 @@ class RecipeIngredient(Base):
 class Menu(Base):
     __tablename__ = 'Menu'
     id = Column(Integer, Sequence('menu_id_seq'), primary_key=True)
-    company = Column(String, primary_key=True)
-    date = Column(Date, primary_key=True)
+    company = Column(String)
+    date = Column(Date)
 
 
 class MenuItem(Base):
