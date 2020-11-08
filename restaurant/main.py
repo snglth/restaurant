@@ -7,8 +7,8 @@ from restaurant.schema import Base as schema_base
 
 app = Flask(__name__)
 app.jinja_env.globals['CAFE_NAME'] = os.environ.get('CAFE_NAME') or "Semyon's Special"
-
-engine = create_engine('postgresql+pg8000://postgres:123@172.17.0.2/restaurant', echo = True)
+# engine = create_engine('sqlite:///:memory:', echo=True)
+engine = create_engine('postgresql://postgres:123@172.17.0.2/restaurant', echo = True)
 schema_base.metadata.create_all(engine)
 
 
