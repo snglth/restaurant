@@ -1,6 +1,6 @@
 image: alpine/edge
 packages:
-  - python
+  - python3
   - poetry
   - rsync
 sources:
