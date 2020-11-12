@@ -1,4 +1,4 @@
-image: archlinux
+image: alpine/edge
 packages:
   - python
   - poetry
@@ -8,7 +8,7 @@ sources:
 environment:
   deploy_host: github@tommy.snglth.space
 secrets:
-  - 46f739e5-4538-45dd-a79f-bf173b7a2ed9
+  - c30324dc-4758-4dab-bcb3-56836e82ab69
 tasks:
   - build: |
       cd restaurant
