@@ -1,0 +1,22 @@
+image: archlinux
+packages:
+  - python
+  - poetry
+  - rsync
+sources:
+  - https://github.com/snglth/restaurant
+environment:
+  deploy_host: github@tommy.snglth.space
+secrets:
+  - 46f739e5-4538-45dd-a79f-bf173b7a2ed9
+tasks:
+  - build: |
+      cd restaurant
+      poetry build
+  - deploy: |
+      cd restaurant
+      sshopts="ssh -o StrictHostKeyChecking=no"
+      rsync --rsh="$sshopts" dist/*.whl $deploy_host:/var/tmp/pkgs
+      ssh $deploy_host /var/www/restaurant/venv/bin/pip uninstall -y restaurant  # This is screwed
+      ssh $deploy_host /var/www/restaurant/venv/bin/pip install restaurant --no-index --find-links file:///var/tmp/pkgs  # This is also screwed
+      ssh $deploy_host sudo killall -HUP uwsgi
