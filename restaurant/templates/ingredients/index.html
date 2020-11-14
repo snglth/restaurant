@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="card panel-default">
+    <div class="card-header">
+      List of ingredients
+    </div>
+      <table class="table table-condensed">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">Unit</th>
+            <th scope="col">Calorific value</th>
+            <th scope="col">Fats value</th>
+            <th scope="col">Proteins value</th>
+            <th scope="col">Carbohydrates value</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Remove</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for ingredient in ingredients %}
+            <tr>
+              <td scope="row">{{ loop.index0 + 1 }}</td>
+              <td>{{ ingredient.title }}</td>
+              <td>{{ ingredient.unit }}</td>
+              <td>{{ ingredient.calorific }}</td>
+              <td>{{ ingredient.fats }}</td>
+              <td>{{ ingredient.proteins }}</td>
+              <td>{{ ingredient.carbohydrates }}</td>
+              <td><a class="btn btn-outline-warning" href="#" role="button"><span class="oi oi-wrench"></span></a></td>
+              <td><a class="btn btn-outline-danger" href="#" role="button"><span class="oi oi-circle-x"></span></a></td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+  </div>
+{% endblock %}

@@ -11,6 +11,9 @@
       integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
       crossorigin="anonymous"
     />
+    <link rel="preload" as="font" href="https://pagecdn.io/lib/open-iconic/1.1.1/fonts/open-iconic.woff" type="font/woff2" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pagecdn.io/lib/open-iconic/1.1.1/css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
   </head>
   <body>
     <nav class="navbar navbar-light bg-light">
@@ -18,8 +21,8 @@
 		  {{ CAFE_NAME }}
       </a>
     </nav>
-    <div class="container">
-      {% block container %}{% endblock %}
+    <div class="container content">
+      {% block content %}{% endblock %}
     </div>
   </body>
 </html>

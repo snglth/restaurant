@@ -1,0 +1,13 @@
+{% from 'bootstrap/form.html' import render_form, render_field %}
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="card panel-default">
+    <div class="card-header">
+      Create new ingredient
+    </div>
+    <div class="card-body">
+      {{ render_form(form) }}
+    </div>
+  </div>
+{% endblock %}
